@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
       <!-- Enable responsiveness on mobile devices-->
@@ -23,18 +22,18 @@
       {% endblock extra_head %}
     </head>
 
-    <body class="hack dark main container">
+    <body class="hack light main container">
         {% block content %}
             {% block header %}
-                {% if config.extra.after_dark_menu %}
+                {% if config.extra.after_light_menu %}
                     <header>
                         <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
-                        {% for item in config.extra.after_dark_menu %}
+                        {% for item in config.extra.after_light_menu %}
                             <a itemprop="url"
                                class="{% if item.url | replace(from="$BASE_URL", to=config.base_url) == current_url %}active{% endif %}"
-                               href="{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) }}">
-                                <span itemprop="name">{{ item.name }}
-                                </span></a>
+                               href="{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) }}" style="margin-right: 10px;">
+                                <span itemprop="name">{{ item.name }}</span>
+                            </a>
                         {% endfor %}
                         </nav>
                     </header>
@@ -42,9 +41,9 @@
             {% endblock header %}
 
             <main>
-                {% if config.extra.after_dark_title %}
+                {% if config.extra.after_light_title %}
                     <header>
-                        <h1>{{ config.extra.after_dark_title }}</h1>
+                        <h1>{{ config.extra.after_light_title }}</h1>
                     </header>
                 {% endif %}
                 {% for page in paginator.pages %}
@@ -65,5 +64,11 @@
             </main>
         {% endblock content %}
     </body>
+    <footer>
+      <small class="muted"> Copyright © Felix Schlösser (aka TinTin). Licensed under <a target="_blank" rel="external noopener license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
 
+
+
+  </small>
+</footer>
 </html>
